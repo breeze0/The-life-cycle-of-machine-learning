@@ -4,7 +4,27 @@ import numpy as np
 import smote
 
 class BoderLineSmote:
-    def __init__(self, k1=5, k2=3, sampling_rate=5):
+    """
+    Border-line SMOTE过采样算法.
+
+    对所有正样本分为三类：
+    ‘noise’： 所有k近邻都属于多数类
+    ‘danger’: 超过一半的k近邻属于多数类
+    ‘safe’： 超过一半的k近邻属于少数类
+
+    Border-line SMOTE算法只会从处于‘danger’状态样本中随机选择，然后用SMOTE算法产生新样本
+    处于‘danger’的样本代表靠近边界，而处于边界的附近的往往容易被误分类。
+
+    Parameters:
+    -----------
+    k1: int
+        对正样本分类时选取的近邻数目.
+    k2: int
+        SMOTE算法时选取的近邻数目
+    sampling_rate: int
+        采样倍数, attention sampling_rate < k2.
+    """
+    def __init__(self, k1=5, k2=3, sampling_rate=3):
         self.sampling_rate = sampling_rate
         self.k1 = k1
         self.k2 = k2
