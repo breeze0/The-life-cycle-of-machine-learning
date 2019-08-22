@@ -1,9 +1,9 @@
 import random
 from sklearn.neighbors import NearestNeighbors
 import numpy as np
-import smote
 
-class BoderLineSmote:
+
+class BorderLineSmote:
     """
     Border-line SMOTE过采样算法.
 
@@ -100,5 +100,5 @@ class BoderLineSmote:
 
 X = np.array([[1, 3, 2], [1, 2, 3], [3, 4, 6], [2, 2, 1], [3, 5, 2], [5, 3, 4], [3, 2, 4], [5, 4, 3], [6, 5, 2], [4, 5, 6]])
 y = np.array([1, 1, 1, 1, 0, 0, 0, 0, 0, 0])
-bs = BoderLineSmote(k1=5, k2=3, sampling_rate=1)
+bs = BorderLineSmote(k1=5, k2=3, sampling_rate=1)
 print(bs.fit(X, y))
