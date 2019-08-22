@@ -40,7 +40,7 @@ class BorderLineSmote:
 
         for i in range(len(postive_X)):
             # reshape(1,-1)重组数组,-1表示列自动计算
-            k_neighbors = knn.kneighbors(X[i].reshape(1, -1), return_distance=False)[0]
+            k_neighbors = knn.kneighbors(postive_X[i].reshape(1, -1), return_distance=False)[0]
             # 对正样本集(minority class samples)中每个样本, 分别根据所有样本集生成k个近邻
             rate = self.evaluate(k_neighbors, y)
             # 计算近邻中正样本所占的比例
